@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp:wght@400&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'HY견고딕', 'Noto Sans KR', sans-serif;
+  }
+  
+  body {
+    @apply bg-minecraft-black text-white;
+  }
+}
+
+@layer components {
+  .kingdom-title {
+    font-family: 'MedievalSharp', cursive;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    letter-spacing: 0.1em;
+  }
+  
+  .gothic-text {
+    font-family: 'HY견고딕', 'Noto Sans KR', sans-serif;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+  }
+}
+
+@layer components {
+  .minecraft-button {
+    @apply bg-minecraft-yellow hover:bg-minecraft-dark-yellow text-white font-bold py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-105 active:scale-95;
+  }
+  
+  .minecraft-card {
+    @apply bg-minecraft-gray border-2 border-minecraft-yellow rounded-lg p-6 shadow-lg;
+  }
+  
+  .minecraft-nav-link {
+    @apply text-white hover:text-minecraft-yellow transition-colors duration-200 cursor-pointer;
+  }
+  
+  .minecraft-nav-link.active {
+    @apply text-minecraft-yellow border-b-2 border-minecraft-yellow;
+  }
+}

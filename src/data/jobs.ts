@@ -1,0 +1,88 @@
+import { Job } from '../types';
+
+export const jobs: Job[] = [
+  {
+    id: 'knight',
+    name: '나이트',
+    nameEn: 'Knight',
+    description: '균형잡힌 스텟의 강인한 전사',
+    difficulty: 1,
+    icon: '⚔️',
+    stats: {
+      health: 120,
+      mana: 50,
+      attack: 85,
+      defense: 90,
+    },
+  },
+  {
+    id: 'ranger',
+    name: '레인저',
+    nameEn: 'Ranger',
+    description: '원거리 공격의 달인',
+    difficulty: 2,
+    icon: '🏹',
+    stats: {
+      health: 90,
+      mana: 60,
+      attack: 95,
+      defense: 60,
+    },
+  },
+  {
+    id: 'assassin',
+    name: '어쌔신',
+    nameEn: 'Assassin',
+    description: '은밀하고 치명적인 암살자',
+    difficulty: 4,
+    icon: '🗡️',
+    stats: {
+      health: 80,
+      mana: 40,
+      attack: 100,
+      defense: 50,
+    },
+  },
+  {
+    id: 'magician',
+    name: '메지션',
+    nameEn: 'Magician',
+    description: '강력한 마법의 소유자',
+    difficulty: 3,
+    icon: '🔮',
+    stats: {
+      health: 70,
+      mana: 120,
+      attack: 90,
+      defense: 40,
+    },
+  },
+  {
+    id: 'paladin',
+    name: '팔라딘',
+    nameEn: 'Paladin',
+    description: '신성한 힘을 가진 방어자',
+    difficulty: 2,
+    icon: '🛡️',
+    stats: {
+      health: 110,
+      mana: 80,
+      attack: 75,
+      defense: 95,
+    },
+  },
+  {
+    id: 'priest',
+    name: '프리스트',
+    nameEn: 'Priest',
+    description: '치유와 보호의 성직자',
+    difficulty: 2,
+    icon: '✝️',
+    stats: {
+      health: 85,
+      mana: 100,
+      attack: 60,
+      defense: 70,
+    },
+  },
+];
