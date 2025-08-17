@@ -5,11 +5,14 @@ export interface Job {
   description: string;
   difficulty: number;
   icon: string;
+  color: string;
   stats: {
-    health: number;
-    mana: number;
     attack: number;
+    mobility: number;
     defense: number;
+    partySupport: number;
+    crowdControl: number;
+    attackRange: number;
   };
 }
 

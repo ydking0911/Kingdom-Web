@@ -8,11 +8,11 @@ const Discord: React.FC = () => {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Page Title */}
         <div className="mb-16">
-          <h1 className="gothic-text text-4xl md:text-5xl lg:text-6xl text-minecraft-yellow mb-8 tracking-wide drop-shadow-lg">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl text-minecraft-yellow mb-8 tracking-wide drop-shadow-lg font-black">
             디스코드
           </h1>
           <p className="gothic-text text-2xl md:text-3xl text-white max-w-4xl mx-auto tracking-wide drop-shadow-lg">
-            Kingdom Online 커뮤니티에 참여하고 다른 플레이어들과 소통하세요!
+            커뮤니티에 참여하고 공지 및 이벤트를 확인하세요!
           </p>
         </div>
 

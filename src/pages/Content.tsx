@@ -1,25 +1,27 @@
 import React, { useState } from 'react';
 import { contents } from '../data/content';
 import { Content } from '../types';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 const ContentPage: React.FC = () => {
   const [selectedContent, setSelectedContent] = useState<Content>(contents[0]);
+  useScrollAnimation();
 
   return (
     <div className="min-h-screen bg-minecraft-black py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Page Title */}
-        <div className="text-center mb-16">
-          <h1 className="gothic-text text-4xl md:text-5xl lg:text-6xl text-minecraft-yellow mb-8 tracking-wide drop-shadow-lg">
+        <div className="text-center mb-16 scroll-fade-in">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl text-minecraft-yellow mb-8 tracking-wide drop-shadow-lg font-black">
             콘텐츠
           </h1>
           <p className="gothic-text text-2xl md:text-3xl text-white max-w-4xl mx-auto tracking-wide drop-shadow-lg">
-            Kingdom Online의 다양한 콘텐츠를 체험해보세요!
+            다양한 콘텐츠를 체험해보세요!
           </p>
         </div>
 
         {/* Content Selection */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12 scroll-scale-in">
           {contents.map((content) => (
             <button
               key={content.id}
@@ -43,7 +45,7 @@ const ContentPage: React.FC = () => {
         {/* Selected Content Details */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Content Info */}
-          <div className="bg-black bg-opacity-60 backdrop-blur-sm rounded-none border-2 border-minecraft-yellow p-8 shadow-2xl">
+          <div className="bg-black bg-opacity-60 backdrop-blur-sm rounded-none border-2 border-minecraft-yellow p-8 shadow-2xl scroll-slide-left">
             <h2 className="kingdom-title text-3xl text-minecraft-yellow mb-4 tracking-wide">
               {selectedContent.title}
             </h2>
@@ -63,39 +65,37 @@ const ContentPage: React.FC = () => {
               </ul>
             </div>
 
-            {/* Special Feature Highlight */}
-            {selectedContent.id === 'gathering' && (
-              <div className="bg-minecraft-yellow bg-opacity-20 border border-minecraft-yellow rounded-lg p-4">
-                <div className="flex items-center">
-                  <span className="text-2xl mr-3">🍃</span>
-                  <div>
-                    <div className="gothic-text text-minecraft-yellow font-semibold tracking-wide">대성공</div>
-                    <div className="text-white text-sm">
-                      가끔, 2배의 보상을 얻을 수도 있습니다!
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
+
           </div>
 
           {/* Content Image */}
-          <div className="bg-black bg-opacity-60 backdrop-blur-sm rounded-none border-2 border-minecraft-yellow p-8 shadow-2xl flex items-center justify-center">
+          <div className="bg-black bg-opacity-60 backdrop-blur-sm rounded-none border-2 border-minecraft-yellow p-8 shadow-2xl flex items-center justify-center scroll-slide-right">
             <div className="text-center">
-              <div className="w-full h-64 bg-minecraft-black bg-opacity-50 rounded-lg border-2 border-dashed border-minecraft-yellow flex items-center justify-center mb-4">
-                <div className="text-center">
-                  <div className="text-4xl mb-2">🌿</div>
-                  <p className="text-gray-400">콘텐츠 이미지</p>
+              <div className="w-full h-64 bg-minecraft-black bg-opacity-50 rounded-lg border-2 border-minecraft-yellow flex items-center justify-center mb-4 overflow-hidden">
+                <img 
+                  src={selectedContent.image}
+                  alt={`${selectedContent.title} 이미지`}
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    // 이미지 로드 실패 시 아이콘으로 대체
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                    target.nextElementSibling?.classList.remove('hidden');
+                  }}
+                />
+                <div className="text-center hidden">
+                  <div className="text-6xl mb-2">🎮</div>
+                  <p className="text-gray-400 text-lg font-semibold">{selectedContent.title}</p>
                   <p className="text-sm text-gray-500 mt-2">
-                    {selectedContent.title} 스크린샷
+                    {selectedContent.title} 시스템
                   </p>
                 </div>
               </div>
               
-              {/* Minecraft-style UI overlay */}
+              {/* System Info */}
               <div className="bg-minecraft-black bg-opacity-70 p-3 rounded text-center">
-                <div className="gothic-text text-minecraft-yellow font-semibold tracking-wide">채집</div>
-                <div className="text-white text-sm">Lv.1: 시든 꽃 덤불</div>
+                <div className="gothic-text text-minecraft-yellow font-semibold tracking-wide">{selectedContent.title}</div>
+                <div className="text-white text-sm">시스템 정보</div>
               </div>
             </div>
           </div>
