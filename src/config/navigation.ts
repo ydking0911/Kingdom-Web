@@ -26,7 +26,7 @@ export const navigationItems: NavigationItem[] = [
 export const siteConfig = {
   name: 'Kingdom Online',
   description: '마인크래프트 RPG 서버',
-  version: 'Minecraft: Java Edition 1.21.1',
+  version: 'Minecraft 1.21.1',
   discordUrl: 'https://discord.gg/uEuAWez2Zb',
   serverIp: 'KDSV.KR',
 };

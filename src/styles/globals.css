@@ -40,12 +40,116 @@
   }
   
   .minecraft-nav-link {
-    @apply text-white hover:text-minecraft-yellow transition-colors duration-200 cursor-pointer;
+    @apply text-white hover:text-minecraft-yellow transition-all duration-200 cursor-pointer relative;
   }
   
   .minecraft-nav-link.active {
-    @apply text-minecraft-yellow border-b-2 border-minecraft-yellow;
+    @apply text-minecraft-yellow;
   }
+  
+  .minecraft-nav-link.active::after {
+    content: '';
+    @apply absolute bottom-0 left-0 right-0 h-0.5 bg-minecraft-yellow;
+  }
+  
+  .minecraft-nav-link:hover::after {
+  content: '';
+  @apply absolute bottom-0 left-0 right-0 h-0.5 bg-minecraft-yellow bg-opacity-60;
+}
+
+/* Character Animation Styles */
+.character-animation-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.character {
+  position: absolute;
+  bottom: -20px;
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.6));
+  z-index: 20;
+}
+
+/* 각 캐릭터별 랜덤 속도와 시작 위치 */
+.character-1 {
+  animation: slime-walk-right 8s linear infinite;
+  animation-delay: 0s;
+}
+
+.character-2 {
+  animation: slime-walk-left 10s linear infinite;
+  animation-delay: 1s;
+}
+
+.character-3 {
+  animation: slime-walk-right 15s linear infinite;
+  animation-delay: 2s;
+}
+
+.character-4 {
+  animation: slime-walk-left 7s linear infinite;
+  animation-delay: 3s;
+}
+
+.character-5 {
+  animation: slime-walk-right 12s linear infinite;
+  animation-delay: 4s;
+}
+
+.character-6 {
+  animation: slime-walk-left 9s linear infinite;
+  animation-delay: 5s;
+}
+
+.character-7 {
+  animation: slime-walk-right 14s linear infinite;
+  animation-delay: 6s;
+}
+
+.character-8 {
+  animation: slime-walk-left 6s linear infinite;
+  animation-delay: 7s;
+}
+
+.character-9 {
+  animation: slime-walk-right 11s linear infinite;
+  animation-delay: 8s;
+}
+
+.character-10 {
+  animation: slime-walk-left 13s linear infinite;
+  animation-delay: 9s;
+}
+
+/* 왼쪽에서 오른쪽으로 움직이는 애니메이션 */
+@keyframes slime-walk-right {
+  0% { 
+    transform: translateX(-120px); 
+  }
+  100% { 
+    transform: translateX(calc(100vw + 120px)); 
+  }
+}
+
+/* 오른쪽에서 왼쪽으로 움직이는 애니메이션 */
+@keyframes slime-walk-left {
+  0% { 
+    transform: translateX(calc(100vw + 120px)); 
+  }
+  100% { 
+    transform: translateX(-120px); 
+  }
+}
+
+
   
   /* 스크롤 애니메이션 클래스들 */
   .scroll-fade-in {
