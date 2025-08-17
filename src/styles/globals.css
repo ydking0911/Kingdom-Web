@@ -18,9 +18,10 @@
 
 @layer components {
   .kingdom-title {
-    font-family: 'MedievalSharp', cursive;
+    font-family: 'Cinzel', serif;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
     letter-spacing: 0.1em;
+    font-weight: 700;
   }
   
   .gothic-text {

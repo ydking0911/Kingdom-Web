@@ -7,17 +7,17 @@ const Discord: React.FC = () => {
     <div className="min-h-screen bg-minecraft-black py-8">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Page Title */}
-        <div className="mb-12">
-          <h1 className="kingdom-title text-5xl md:text-6xl text-minecraft-yellow mb-6 tracking-wider">
+        <div className="mb-16">
+          <h1 className="gothic-text text-4xl md:text-5xl lg:text-6xl text-minecraft-yellow mb-8 tracking-wide drop-shadow-lg">
             디스코드
           </h1>
-          <p className="gothic-text text-xl text-gray-300 max-w-3xl mx-auto tracking-wide">
+          <p className="gothic-text text-2xl md:text-3xl text-white max-w-4xl mx-auto tracking-wide drop-shadow-lg">
             Kingdom Online 커뮤니티에 참여하고 다른 플레이어들과 소통하세요!
           </p>
         </div>
 
         {/* Discord Info Card */}
-        <div className="minecraft-card mb-12">
+        <div className="bg-black bg-opacity-60 backdrop-blur-sm rounded-none border-2 border-minecraft-yellow p-8 shadow-2xl mb-12">
           <div className="text-6xl mb-6">💬</div>
           <h2 className="text-2xl font-bold text-white mb-4">
             커뮤니티에 참여하세요
@@ -61,7 +61,7 @@ const Discord: React.FC = () => {
         </div>
 
         {/* Server Info */}
-        <div className="minecraft-card">
+        <div className="bg-black bg-opacity-60 backdrop-blur-sm rounded-none border-2 border-minecraft-yellow p-8 shadow-2xl">
           <h3 className="text-xl font-bold text-white mb-4">
             서버 정보
           </h3>

@@ -26,11 +26,11 @@ const Jobs: React.FC = () => {
     <div className="min-h-screen bg-minecraft-black py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Page Title */}
-        <div className="text-center mb-12">
-          <h1 className="kingdom-title text-5xl md:text-6xl text-minecraft-yellow mb-6 tracking-wider">
+        <div className="text-center mb-16">
+          <h1 className="gothic-text text-4xl md:text-5xl lg:text-6xl text-minecraft-yellow mb-8 tracking-wide drop-shadow-lg">
             직업 정보
           </h1>
-          <p className="gothic-text text-xl text-gray-300 max-w-3xl mx-auto tracking-wide">
+          <p className="gothic-text text-2xl md:text-3xl text-white max-w-4xl mx-auto tracking-wide drop-shadow-lg">
             Kingdom Online의 다양한 직업 중 자신에게 맞는 직업을 찾아보세요!
           </p>
         </div>
@@ -56,7 +56,7 @@ const Jobs: React.FC = () => {
         {/* Selected Job Details */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Job Info */}
-          <div className="minecraft-card">
+          <div className="bg-black bg-opacity-60 backdrop-blur-sm rounded-none border-2 border-minecraft-yellow p-8 shadow-2xl">
             <div className="flex items-center mb-6">
               <span className="text-4xl mr-4">{selectedJob.icon}</span>
               <div>
@@ -98,7 +98,7 @@ const Jobs: React.FC = () => {
           </div>
 
           {/* Game Screenshot Placeholder */}
-          <div className="minecraft-card flex items-center justify-center">
+          <div className="bg-black bg-opacity-60 backdrop-blur-sm rounded-none border-2 border-minecraft-yellow p-8 shadow-2xl flex items-center justify-center">
             <div className="text-center">
               <div className="w-full h-64 bg-minecraft-black bg-opacity-50 rounded-lg border-2 border-dashed border-minecraft-yellow flex items-center justify-center mb-4">
                 <div className="text-center">
