@@ -21,11 +21,11 @@ const Home: React.FC = () => {
         <div className="text-center max-w-5xl mx-auto px-4">
           {/* Main Title */}
           <div className="mb-12">
-            <h1 className="kingdom-title text-6xl md:text-8xl lg:text-9xl text-minecraft-yellow mb-8 tracking-widest drop-shadow-2xl animate-pulse">
-              KINGDOM ONLINE
+            <h1 className="kingdom-title text-5xl md:text-7xl lg:text-8xl text-minecraft-yellow mb-8 tracking-wider drop-shadow-2xl animate-pulse">
+              Kingdom Online
             </h1>
-            <h2 className="gothic-text text-3xl md:text-4xl lg:text-5xl text-white mb-10 font-medium tracking-wide drop-shadow-lg">
-              정교한 클래스, 잔혹한 레이드
+            <h2 className="gothic-text text-xl md:text-2xl lg:text-3xl text-white mb-10 font-medium tracking-wide drop-shadow-lg">
+              고퀄리티 스킬, 다양한 레이드 패턴
             </h2>
           </div>
 
