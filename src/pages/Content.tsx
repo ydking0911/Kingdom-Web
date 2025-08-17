@@ -8,7 +8,7 @@ const ContentPage: React.FC = () => {
   useScrollAnimation();
 
   return (
-    <div className="min-h-screen bg-minecraft-black py-8">
+    <div className="min-h-screen bg-minecraft-black py-8 pt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Page Title */}
         <div className="text-center mb-16 scroll-fade-in">
@@ -46,7 +46,7 @@ const ContentPage: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Content Info */}
           <div className="bg-black bg-opacity-60 backdrop-blur-sm rounded-none border-2 border-minecraft-yellow p-8 shadow-2xl scroll-slide-left">
-            <h2 className="kingdom-title text-3xl text-minecraft-yellow mb-4 tracking-wide">
+            <h2 className="gothic-text text-3xl text-minecraft-yellow mb-4 tracking-wide font-bold">
               {selectedContent.title}
             </h2>
             <p className="text-gray-300 text-lg mb-6">
@@ -59,7 +59,10 @@ const ContentPage: React.FC = () => {
                 {selectedContent.features.map((feature, index) => (
                   <li key={index} className="flex items-start">
                     <span className="text-minecraft-yellow mr-3 mt-1">•</span>
-                    <span className="text-white">{feature}</span>
+                    <span 
+                      className="text-white"
+                      dangerouslySetInnerHTML={{ __html: feature }}
+                    />
                   </li>
                 ))}
               </ul>
@@ -71,25 +74,55 @@ const ContentPage: React.FC = () => {
           {/* Content Image */}
           <div className="bg-black bg-opacity-60 backdrop-blur-sm rounded-none border-2 border-minecraft-yellow p-8 shadow-2xl flex items-center justify-center scroll-slide-right">
             <div className="text-center">
-              <div className="w-full h-64 bg-minecraft-black bg-opacity-50 rounded-lg border-2 border-minecraft-yellow flex items-center justify-center mb-4 overflow-hidden">
-                <img 
-                  src={selectedContent.image}
-                  alt={`${selectedContent.title} 이미지`}
-                  className="w-full h-full object-cover"
-                  onError={(e) => {
-                    // 이미지 로드 실패 시 아이콘으로 대체
-                    const target = e.target as HTMLImageElement;
-                    target.style.display = 'none';
-                    target.nextElementSibling?.classList.remove('hidden');
-                  }}
-                />
-                <div className="text-center hidden">
-                  <div className="text-6xl mb-2">🎮</div>
-                  <p className="text-gray-400 text-lg font-semibold">{selectedContent.title}</p>
-                  <p className="text-sm text-gray-500 mt-2">
-                    {selectedContent.title} 시스템
-                  </p>
-                </div>
+              <div className={`w-full ${selectedContent.id === 'collection' ? 'h-48' : 'h-64'} bg-minecraft-black bg-opacity-50 rounded-lg border-2 border-minecraft-yellow flex items-center justify-center mb-4 overflow-hidden`}>
+                {selectedContent.images ? (
+                  // 여러 이미지가 있는 경우
+                  <div className="w-full h-full flex">
+                    {selectedContent.images.map((img, index) => (
+                      <div key={index} className="flex-1 relative">
+                        <img 
+                          src={img.src}
+                          alt={img.alt}
+                          className="w-full h-full object-cover"
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.style.display = 'none';
+                            target.nextElementSibling?.classList.remove('hidden');
+                          }}
+                        />
+                        <div className="text-center hidden absolute inset-0 flex items-center justify-center">
+                          <div className="text-4xl mb-2">🎮</div>
+                          <p className="text-gray-400 text-sm font-semibold">{img.label}</p>
+                        </div>
+                        {/* 이미지 라벨 */}
+                        <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 p-2 text-center">
+                          <span className="text-white text-xs font-medium">{img.label}</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  // 단일 이미지가 있는 경우
+                  <>
+                    <img 
+                      src={selectedContent.image}
+                      alt={`${selectedContent.title} 이미지`}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                        target.nextElementSibling?.classList.remove('hidden');
+                      }}
+                    />
+                    <div className="text-center hidden absolute inset-0 flex items-center justify-center">
+                      <div className="text-6xl mb-2">🎮</div>
+                      <p className="text-gray-400 text-lg font-semibold">{selectedContent.title}</p>
+                      <p className="text-sm text-gray-500 mt-2">
+                        {selectedContent.title} 시스템
+                      </p>
+                    </div>
+                  </>
+                )}
               </div>
               
               {/* System Info */}

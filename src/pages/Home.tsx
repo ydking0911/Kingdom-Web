@@ -7,7 +7,7 @@ const Home: React.FC = () => {
   useScrollAnimation();
   
   return (
-    <div className="min-h-screen relative overflow-hidden">
+    <div className="min-h-screen relative overflow-hidden pt-16">
       {/* Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-gradient-to-br from-gray-900 via-black to-gray-800"

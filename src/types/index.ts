@@ -20,7 +20,12 @@ export interface Content {
   id: string;
   title: string;
   description: string;
-  image: string;
+  image?: string;
+  images?: Array<{
+    src: string;
+    alt: string;
+    label: string;
+  }>;
   features: string[];
 }
 
