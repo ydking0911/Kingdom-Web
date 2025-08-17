@@ -43,10 +43,15 @@ const Header: React.FC = () => {
             ))}
           </nav>
 
-          {/* Game Join Button */}
+          {/* Discord Join Button */}
           <div className="flex items-center flex-shrink-0">
-            <button className="minecraft-button text-base">
-              게임 참여
+            <button 
+              className="discord-button text-base"
+              onClick={() => {
+                window.open(siteConfig.discordUrl, '_blank');
+              }}
+            >
+              디스코드 참여
             </button>
           </div>
         </div>

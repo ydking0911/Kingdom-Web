@@ -35,6 +35,15 @@
     @apply bg-minecraft-yellow hover:bg-minecraft-dark-yellow text-white font-bold py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-105 active:scale-95;
   }
   
+  .discord-button {
+    @apply text-white font-bold py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-105 active:scale-95;
+    background-color: #6c71c4;
+  }
+  
+  .discord-button:hover {
+    background-color: #5a5fad;
+  }
+  
   .minecraft-card {
     @apply bg-minecraft-gray border-2 border-minecraft-yellow rounded-lg p-6 shadow-lg;
   }
@@ -76,6 +85,8 @@
   object-fit: contain;
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.6));
   z-index: 20;
+  /* 기본 애니메이션 제거 */
+  animation: none;
 }
 
 /* 각 캐릭터별 랜덤 속도와 시작 위치 */
@@ -151,12 +162,36 @@
 
 
   
-  /* 스크롤 애니메이션 클래스들 */
-  .scroll-fade-in {
+  /* 토스트 메시지 애니메이션 */
+@keyframes toast-animation {
+  0% {
     opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.6s ease-out;
+    transform: translateY(-20px) scale(0.9);
   }
+  20% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.9);
+  }
+}
+
+.animate-toast {
+  animation: toast-animation 1s ease-in-out forwards;
+}
+
+/* 스크롤 애니메이션 클래스들 */
+.scroll-fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease-out;
+}
   
   .scroll-fade-in.visible {
     opacity: 1;
