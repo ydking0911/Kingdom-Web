@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from '../components/Button';
 import { siteConfig } from '../config/navigation';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 const Home: React.FC = () => {
   useScrollAnimation();
+  const [showToast, setShowToast] = useState(false);
+  
+  const handleCopyServerIP = async () => {
+    try {
+      await navigator.clipboard.writeText(siteConfig.serverIp);
+      setShowToast(true);
+      setTimeout(() => setShowToast(false), 1000); // 1초 후 자동으로 사라짐
+    } catch (err) {
+      // 복사 실패 시 대안 제공
+      alert(`서버 주소: ${siteConfig.serverIp}\n\n위 주소를 복사해서 마인크래프트 서버 추가에 사용하세요.`);
+    }
+  };
   
   return (
     <div className="h-screen relative overflow-hidden pt-16">
@@ -34,8 +46,12 @@ const Home: React.FC = () => {
 
           {/* Call to Action */}
           <div className="mb-12 scroll-scale-in">
-            <Button size="lg" className="gothic-text text-2xl tracking-wider shadow-2xl transform hover:scale-105 transition-all duration-300">
-              지금 바로 시작하기
+            <Button 
+              size="lg" 
+              className="gothic-text text-2xl tracking-wider shadow-2xl transform hover:scale-105 transition-all duration-300"
+              onClick={handleCopyServerIP}
+            >
+              서버주소 복사하기
             </Button>
           </div>
 
@@ -96,6 +112,18 @@ const Home: React.FC = () => {
           </div>
         </div>
       </div>
+      
+      {/* Toast Message */}
+      {showToast && (
+        <div className="fixed inset-0 flex items-center justify-center z-50">
+          <div className="bg-black bg-opacity-90 text-gray-400 px-24 py-16 rounded-lg shadow-2xl animate-toast">
+            <div className="text-center">
+              <div className="gothic-text text-3xl mb-6">클립보드에 복사되었습니다!</div>
+              <div className="text-2xl text-gray-400">서버 주소: {siteConfig.serverIp}</div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
