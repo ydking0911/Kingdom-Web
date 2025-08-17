@@ -1,6 +1,8 @@
 # Kingdom Online RPG
 
 마인크래프트 RPG 서버 **Kingdom Online**의 공식 웹사이트입니다.
+<img width="3834" height="2148" alt="home" src="https://github.com/user-attachments/assets/5e99bfda-5ebe-4f51-ba0e-2b605a588b74" />
+
 
 ## 🚀 기술 스택
 
