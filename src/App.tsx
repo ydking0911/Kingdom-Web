@@ -4,7 +4,7 @@ import Header from './components/Header';
 import Home from './pages/Home';
 import Jobs from './pages/Jobs';
 import ContentPage from './pages/Content';
-import Discord from './pages/Discord';
+import Community from './pages/Community';
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/jobs" element={<Jobs />} />
           <Route path="/content" element={<ContentPage />} />
-          <Route path="/discord" element={<Discord />} />
+          <Route path="/community" element={<Community />} />
         </Routes>
       </div>
     </Router>

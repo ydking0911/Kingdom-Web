@@ -5,11 +5,14 @@ export interface Job {
   description: string;
   difficulty: number;
   icon: string;
+  color: string;
   stats: {
-    health: number;
-    mana: number;
     attack: number;
+    mobility: number;
     defense: number;
+    partySupport: number;
+    crowdControl: number;
+    attackRange: number;
   };
 }
 
@@ -17,7 +20,12 @@ export interface Content {
   id: string;
   title: string;
   description: string;
-  image: string;
+  image?: string;
+  images?: Array<{
+    src: string;
+    alt: string;
+    label: string;
+  }>;
   features: string[];
 }
 
