@@ -6,6 +6,8 @@ import { useScrollAnimation } from '../hooks/useScrollAnimation';
 const Home: React.FC = () => {
   useScrollAnimation();
   const [showToast, setShowToast] = useState(false);
+  const [disappearingSlimes, setDisappearingSlimes] = useState<Set<number>>(new Set()); // Added for disappearing slimes
+
   
   const handleCopyServerIP = async () => {
     try {
@@ -16,6 +18,25 @@ const Home: React.FC = () => {
       // 복사 실패 시 대안 제공
       alert(`서버 주소: ${siteConfig.serverIp}\n\n위 주소를 복사해서 마인크래프트 서버 추가에 사용하세요.`);
     }
+  };
+  
+  const handleSlimeClick = (index: number) => {
+    console.log(`슬라임 ${index} 클릭됨!`);
+    
+    // 이미 사라진 슬라임은 클릭 무시
+    if (disappearingSlimes.has(index)) {
+      console.log(`슬라임 ${index}는 이미 사라짐`);
+      return;
+    }
+    
+    // 슬라임 즉시 사라짐
+    console.log(`슬라임 ${index} 사라짐 처리 중...`);
+    setDisappearingSlimes(prev => {
+      const newSet = new Set(prev);
+      newSet.add(index);
+      console.log(`현재 사라진 슬라임들:`, Array.from(newSet));
+      return newSet;
+    });
   };
   
   return (
@@ -34,8 +55,37 @@ const Home: React.FC = () => {
       {/* Content */}
       <div className="relative z-10 flex items-center justify-center h-full">
         <div className="text-center max-w-5xl mx-auto px-4">
+          {/* 로고 (항상 렌더링하되 조건에 따라 hidden 처리) */}
+          <div 
+            className={`flex justify-center mb-0 mt-0 scroll-fade-in ${disappearingSlimes.size === 5 ? 'logo-visible' : 'logo-hidden'}`}
+            style={{ position: 'relative', zIndex: 9999 }}
+          >
+            <img
+              src="/images/logo.png"
+              alt="Kingdom Online Logo"
+              className="w-48 h-48 logo-appear"
+              style={{
+                opacity: 1,
+                visibility: 'visible',
+                display: 'block',
+                position: 'relative',
+                zIndex: 9999
+              }}
+              onLoad={(e) => {
+                console.log('로고 이미지 로드 성공!', e.currentTarget);
+                console.log('로고 요소:', e.currentTarget);
+                console.log('로고 스타일:', window.getComputedStyle(e.currentTarget));
+              }}
+              onError={(e) => {
+                console.error('로고 이미지 로드 실패:', e);
+              }}
+            />
+          </div>
+          
+
+          
           {/* Main Title */}
-          <div className="mb-12 scroll-fade-in">
+          <div className="mb-0 scroll-fade-in">
             <h1 className="kingdom-title text-5xl md:text-7xl lg:text-8xl text-minecraft-yellow mb-8 tracking-wider drop-shadow-2xl animate-pulse">
               Kingdom Online
             </h1>
@@ -93,13 +143,14 @@ const Home: React.FC = () => {
                 key={index}
                 src="/images/character/slime.gif" 
                 alt={`슬라임 ${index + 1}`} 
-                className={`character character-${index + 1}`}
+                className={`character character-${index + 1} ${disappearingSlimes.has(index) ? 'slime-disappearing' : ''}`}
                 style={{
                   animation: index % 2 === 0 
                     ? `slime-walk-right ${8 + index * 0.5}s linear infinite`
                     : `slime-walk-left ${6 + index * 0.8}s linear infinite`,
                   animationDelay: `${index * 0.5}s`
                 }}
+                onClick={() => handleSlimeClick(index)}
                 onError={(e) => {
                   console.error(`슬라임 ${index + 1} GIF 로드 실패:`, e);
                   e.currentTarget.style.display = 'none';
@@ -109,6 +160,8 @@ const Home: React.FC = () => {
                 }}
               />
             ))}
+            
+
           </div>
         </div>
       </div>

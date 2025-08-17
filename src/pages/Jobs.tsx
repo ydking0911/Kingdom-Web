@@ -66,8 +66,12 @@ const Jobs: React.FC = () => {
                   : 'border-minecraft-gray hover:border-minecraft-yellow bg-minecraft-gray bg-opacity-50'
               }`}
             >
-              <div className="w-full h-8 mb-2 flex items-center justify-center text-2xl">
-                {job.icon}
+              <div className="w-full h-8 mb-2 flex items-center justify-center">
+                <img 
+                  src={job.icon} 
+                  alt={`${job.name} 아이콘`}
+                  className="w-6 h-6 object-contain"
+                />
               </div>
               <div className="text-white font-bold text-sm">{job.name}</div>
             </button>
@@ -79,7 +83,11 @@ const Jobs: React.FC = () => {
           {/* Job Info */}
           <div className="bg-black bg-opacity-60 backdrop-blur-sm rounded-none border-2 border-minecraft-yellow p-8 shadow-2xl scroll-slide-left">
             <div className="flex items-center mb-6">
-              <span className="text-4xl mr-4">{selectedJob.icon}</span>
+              <img 
+                src={selectedJob.icon} 
+                alt={`${selectedJob.name} 아이콘`}
+                className="w-16 h-16 mr-4 object-contain"
+              />
               <div>
                 <h2 className="text-3xl font-bold text-white mb-2">
                   {selectedJob.name}
