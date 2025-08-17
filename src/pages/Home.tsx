@@ -7,7 +7,7 @@ const Home: React.FC = () => {
   useScrollAnimation();
   
   return (
-    <div className="min-h-screen relative overflow-hidden pt-16">
+    <div className="h-screen relative overflow-hidden pt-16">
       {/* Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-gradient-to-br from-gray-900 via-black to-gray-800"
@@ -20,7 +20,7 @@ const Home: React.FC = () => {
       <div className="absolute inset-0 bg-black bg-opacity-65"></div>
       
       {/* Content */}
-      <div className="relative z-10 flex items-center justify-center min-h-screen">
+      <div className="relative z-10 flex items-center justify-center h-full">
         <div className="text-center max-w-5xl mx-auto px-4">
           {/* Main Title */}
           <div className="mb-12 scroll-fade-in">
@@ -53,7 +53,7 @@ const Home: React.FC = () => {
               </div>
               <div className="text-center">
                 <h4 className="gothic-text text-minecraft-yellow font-semibold mb-3 text-lg tracking-wide">게임 버전</h4>
-                <p className="gothic-text text-white font-mono text-xl tracking-wider">{siteConfig.version}</p>
+                <p className="gothic-text text-white font-mono text-base tracking-wide">{siteConfig.version}</p>
               </div>
               <div className="text-center">
                 <h4 className="gothic-text text-minecraft-yellow font-semibold mb-3 text-lg tracking-wide">커뮤니티</h4>
@@ -67,6 +67,32 @@ const Home: React.FC = () => {
                 </a>
               </div>
             </div>
+          </div>
+
+          {/* Character Animation */}
+          <div className="character-animation-container">
+            {/* 5개의 랜덤 캐릭터들 */}
+            {Array.from({ length: 5 }, (_, index) => (
+              <img 
+                key={index}
+                src="/images/character/slime.gif" 
+                alt={`슬라임 ${index + 1}`} 
+                className={`character character-${index + 1}`}
+                style={{
+                  animation: index % 2 === 0 
+                    ? `slime-walk-right ${8 + index * 0.5}s linear infinite`
+                    : `slime-walk-left ${6 + index * 0.8}s linear infinite`,
+                  animationDelay: `${index * 0.5}s`
+                }}
+                onError={(e) => {
+                  console.error(`슬라임 ${index + 1} GIF 로드 실패:`, e);
+                  e.currentTarget.style.display = 'none';
+                }}
+                onLoad={(e) => {
+                  console.log(`슬라임 ${index + 1} GIF 로드 성공!`);
+                }}
+              />
+            ))}
           </div>
         </div>
       </div>

@@ -17,7 +17,7 @@ const Community: React.FC = () => {
             커뮤니티
           </h1>
           <p className="gothic-text text-2xl md:text-3xl text-white max-w-4xl mx-auto tracking-wide drop-shadow-lg">
-            Kingdom Online 플레이어들과 함께하는 활발한 커뮤니티를 경험하세요!
+            플레이어들과 함께하는 활발한 커뮤니티를 경험하세요!
           </p>
         </div>
 
