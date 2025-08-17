@@ -1,10 +1,13 @@
 import React from 'react';
 import Button from '../components/Button';
 import { siteConfig } from '../config/navigation';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 const Home: React.FC = () => {
+  useScrollAnimation();
+  
   return (
-    <div className="min-h-screen relative overflow-hidden">
+    <div className="min-h-screen relative overflow-hidden pt-16">
       {/* Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-gradient-to-br from-gray-900 via-black to-gray-800"
@@ -20,7 +23,7 @@ const Home: React.FC = () => {
       <div className="relative z-10 flex items-center justify-center min-h-screen">
         <div className="text-center max-w-5xl mx-auto px-4">
           {/* Main Title */}
-          <div className="mb-12">
+          <div className="mb-12 scroll-fade-in">
             <h1 className="kingdom-title text-5xl md:text-7xl lg:text-8xl text-minecraft-yellow mb-8 tracking-wider drop-shadow-2xl animate-pulse">
               Kingdom Online
             </h1>
@@ -30,19 +33,19 @@ const Home: React.FC = () => {
           </div>
 
           {/* Call to Action */}
-          <div className="mb-12">
+          <div className="mb-12 scroll-scale-in">
             <Button size="lg" className="gothic-text text-2xl tracking-wider shadow-2xl transform hover:scale-105 transition-all duration-300">
               지금 바로 시작하기
             </Button>
           </div>
 
           {/* Subtitle */}
-          <p className="gothic-text text-lg md:text-xl text-gray-300 mb-12 tracking-wide">
+          <p className="gothic-text text-lg md:text-xl text-gray-300 mb-12 tracking-wide scroll-fade-in">
             누구나 쉽게 접속 가능합니다!
           </p>
 
           {/* Server Info */}
-          <div className="bg-black bg-opacity-60 backdrop-blur-sm rounded-none border-2 border-minecraft-yellow p-8 shadow-2xl">
+          <div className="bg-black bg-opacity-60 backdrop-blur-sm rounded-none border-2 border-minecraft-yellow p-8 shadow-2xl scroll-slide-left">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="text-center">
                 <h4 className="gothic-text text-minecraft-yellow font-semibold mb-3 text-lg tracking-wide">서버 주소</h4>

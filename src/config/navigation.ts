@@ -17,9 +17,9 @@ export const navigationItems: NavigationItem[] = [
     path: '/content',
   },
   {
-    id: 'discord',
-    name: '디스코드',
-    path: '/discord',
+    id: 'community',
+    name: '커뮤니티',
+    path: '/community',
   },
 ];
 
