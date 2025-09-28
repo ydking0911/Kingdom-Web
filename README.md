@@ -1,6 +1,8 @@
 # Kingdom Online RPG
 
-마인크래프트 RPG 서버 **Kingdom Online**의 공식 웹사이트입니다.
+Front 테스트 개발 (Cursor, MCP)
+
+
 <img width="3834" height="2148" alt="home" src="https://github.com/user-attachments/assets/5e99bfda-5ebe-4f51-ba0e-2b605a588b74" />
 
 <img width="3840" height="2148" alt="job" src="https://github.com/user-attachments/assets/124fd6fe-ecc5-44d7-8a9d-86b86e02f4e3" />
